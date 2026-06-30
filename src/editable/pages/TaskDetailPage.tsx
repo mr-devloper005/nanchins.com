@@ -8,6 +8,7 @@ import type { SitePost } from '@/lib/site-connector'
 import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
 import { EditableArticleComments } from '@/editable/components/EditableArticleComments'
 import { getTaskTheme, taskThemeStyle } from '@/editable/theme/task-themes'
+import { Ads } from '@/lib/ads'
 
 export const revalidate = 3
 
@@ -113,10 +114,24 @@ const mapSrcFor = (post: SitePost) => {
   return ''
 }
 
+const detailAds: Record<TaskKey, { top: 'header' | 'sidebar' | 'in-feed' | 'article-bottom' | 'footer'; bottom: 'header' | 'sidebar' | 'in-feed' | 'article-bottom' | 'footer' }> = {
+  article: { top: 'header', bottom: 'article-bottom' },
+  listing: { top: 'header', bottom: 'sidebar' },
+  classified: { top: 'in-feed', bottom: 'footer' },
+  image: { top: 'header', bottom: 'footer' },
+  sbm: { top: 'sidebar', bottom: 'footer' },
+  pdf: { top: 'header', bottom: 'article-bottom' },
+  profile: { top: 'sidebar', bottom: 'footer' },
+}
+
 export function TaskDetailView({ task, post, related, comments = [] }: { task: TaskKey; post: SitePost; related: SitePost[]; comments?: Array<{ id: string; name: string; comment: string; createdAt: string }> }) {
+  const adPlan = detailAds[task]
   return (
     <EditableSiteShell>
       <main style={taskThemeStyle(task)} className="min-h-screen bg-[var(--tk-bg)] text-[var(--tk-text)]">
+        <div className="mx-auto max-w-6xl px-4 py-6">
+          <Ads slot={adPlan.top} showLabel eager className="mx-auto w-full" />
+        </div>
         {task === 'listing' ? <ListingDetail post={post} related={related} /> : null}
         {task === 'classified' ? <ClassifiedDetail post={post} related={related} /> : null}
         {task === 'image' ? <ImageDetail post={post} related={related} /> : null}
@@ -124,6 +139,9 @@ export function TaskDetailView({ task, post, related, comments = [] }: { task: T
         {task === 'pdf' ? <PdfDetail post={post} related={related} /> : null}
         {task === 'profile' ? <ProfileDetail post={post} related={related} /> : null}
         {task === 'article' ? <ArticleDetail post={post} related={related} comments={comments} /> : null}
+        <div className="mx-auto max-w-6xl px-4 py-6">
+          <Ads slot={adPlan.bottom} showLabel eager className="mx-auto w-full" />
+        </div>
       </main>
     </EditableSiteShell>
   )
@@ -264,7 +282,7 @@ function ClassifiedDetail({ post, related }: { post: SitePost; related: SitePost
       <section className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-6 py-14 sm:py-20 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <BackLink task="classified" />
-          <div className="mt-7 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+          <div className="mt-7 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-7 shadow-[0_22px_60px_rgba(183,4,4,0.18)]">
             <Kicker task="classified">Classified</Kicker>
             <h1 className="editable-display mt-4 text-2xl font-semibold leading-tight tracking-[-0.02em]">{post.title}</h1>
             <DetailMeta post={post} category={getField(post, ['category'])} />
@@ -274,8 +292,8 @@ function ClassifiedDetail({ post, related }: { post: SitePost; related: SitePost
               {location ? <BadgeLine label="Location" value={location} /> : null}
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              {phone ? <a href={`tel:${phone}`} className="inline-flex items-center gap-2 rounded-full bg-[var(--tk-accent)] px-5 py-2.5 text-sm font-semibold text-[var(--tk-on-accent)] transition hover:opacity-90"><Phone className="h-4 w-4" /> Call now</a> : null}
-              {email ? <a href={`mailto:${email}`} className="inline-flex items-center gap-2 rounded-full border border-[var(--tk-line)] px-5 py-2.5 text-sm font-semibold transition hover:border-[var(--tk-accent)]"><Mail className="h-4 w-4" /> Email</a> : null}
+              {phone ? <a href={`tel:${phone}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline"><Phone className="h-4 w-4" /> Call now</a> : null}
+              {email ? <a href={`mailto:${email}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline"><Mail className="h-4 w-4" /> Email</a> : null}
             </div>
           </div>
         </aside>
@@ -331,7 +349,7 @@ function BookmarkDetail({ post, related }: { post: SitePost; related: SitePost[]
         <h1 className="editable-display mt-4 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl">{post.title}</h1>
         {leadText(post) ? <p className="mt-6 text-lg leading-8 text-[var(--tk-muted)]">{leadText(post)}</p> : null}
         {website ? (
-          <Link href={website} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--tk-accent)] px-5 py-3 text-sm font-semibold text-[var(--tk-on-accent)] transition hover:opacity-90">
+          <Link href={website} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline">
             Open resource <ExternalLink className="h-4 w-4" />
           </Link>
         ) : null}
@@ -362,7 +380,7 @@ function PdfDetail({ post, related }: { post: SitePost; related: SitePost[] }) {
             <div className="mt-10 overflow-hidden rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)]">
               <div className="flex items-center justify-between gap-3 border-b border-[var(--tk-line)] p-4">
                 <span className="text-sm font-semibold">Document preview</span>
-                <Link href={fileUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--tk-accent)] px-4 py-2 text-xs font-semibold text-[var(--tk-on-accent)] transition hover:opacity-90">Download <Download className="h-4 w-4" /></Link>
+                <Link href={fileUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--tk-accent)] transition hover:underline">Download <Download className="h-4 w-4" /></Link>
               </div>
               <iframe src={`${fileUrl}#toolbar=0&navpanes=0&scrollbar=0`} title={post.title} className="h-[78vh] w-full bg-[var(--tk-raised)]" />
             </div>
@@ -373,7 +391,7 @@ function PdfDetail({ post, related }: { post: SitePost; related: SitePost[] }) {
             <div className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-6">
               <p className="text-sm font-semibold">Get this document</p>
               <p className="mt-2 text-sm leading-6 text-[var(--tk-muted)]">Open or download the full file in a new tab.</p>
-              <Link href={fileUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--tk-accent)] px-5 py-3 text-sm font-semibold text-[var(--tk-on-accent)] transition hover:opacity-90">Download <Download className="h-4 w-4" /></Link>
+              <Link href={fileUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline">Download <Download className="h-4 w-4" /></Link>
             </div>
           ) : null}
           <RelatedPanel task="pdf" post={post} related={related} />
@@ -395,7 +413,7 @@ function ProfileDetail({ post, related }: { post: SitePost; related: SitePost[] 
         <BackLink task="profile" />
         <div className="mt-8 grid gap-10 lg:grid-cols-[360px_minmax(0,1fr)]">
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-8 text-center shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+            <div className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-8 text-center shadow-[0_22px_60px_rgba(183,4,4,0.18)]">
               <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-[var(--tk-line)] bg-[var(--tk-raised)]">
                 {images[0] ? <img src={images[0]} alt="" className="h-full w-full object-cover" /> : <UserRound className="h-14 w-14 text-[var(--tk-muted)]" />}
               </div>
@@ -471,9 +489,9 @@ function ContactAction({ website, phone, email, bare = false }: { website?: stri
   if (!website && !phone && !email) return null
   const buttons = (
     <div className={`flex flex-wrap gap-2.5 ${bare ? 'justify-center' : ''}`}>
-      {website ? <Link href={website} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--tk-accent)] px-4 py-2.5 text-sm font-semibold text-[var(--tk-on-accent)] transition hover:opacity-90">Website <ExternalLink className="h-4 w-4" /></Link> : null}
-      {phone ? <a href={`tel:${phone}`} className="inline-flex items-center gap-2 rounded-full border border-[var(--tk-line)] px-4 py-2.5 text-sm font-semibold transition hover:border-[var(--tk-accent)]"><Phone className="h-4 w-4" /> Call</a> : null}
-      {email ? <a href={`mailto:${email}`} className="inline-flex items-center gap-2 rounded-full border border-[var(--tk-line)] px-4 py-2.5 text-sm font-semibold transition hover:border-[var(--tk-accent)]"><Mail className="h-4 w-4" /> Email</a> : null}
+      {website ? <Link href={website} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline">Website <ExternalLink className="h-4 w-4" /></Link> : null}
+      {phone ? <a href={`tel:${phone}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline"><Phone className="h-4 w-4" /> Call</a> : null}
+      {email ? <a href={`mailto:${email}`} className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--tk-accent)] transition hover:underline"><Mail className="h-4 w-4" /> Email</a> : null}
     </div>
   )
   if (bare) return <div className="mt-6">{buttons}</div>
