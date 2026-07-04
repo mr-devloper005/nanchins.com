@@ -14,12 +14,10 @@ export function EditableFooter() {
   return (
     <footer className="mt-auto bg-[var(--editable-footer-bg)] text-[var(--editable-footer-text)]">
       <div className="mx-auto max-w-[var(--editable-container)] px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 rounded-[2rem] border border-[rgba(255,229,105,0.16)] bg-[rgba(219,0,91,0.18)] px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1fr]">
+        <div className="grid gap-6 rounded-[2rem] border border-[rgba(255,229,105,0.16)] bg-[rgba(219,0,91,0.18)] px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,229,105,0.96)]">
-                <img src="/favicon.png?v=20260413" alt={SITE_CONFIG.name} className="h-8 w-8 object-contain" />
-              </span>
+              <img src="/favicon.png?v=20260413" alt={SITE_CONFIG.name} className="h-12 w-12 object-contain" />
               <span className="editable-display text-[2rem] font-semibold tracking-[-0.04em]">{SITE_CONFIG.name}</span>
             </Link>
             <p className="mt-5 max-w-md text-sm leading-7 text-[rgba(255,229,105,0.78)]">
