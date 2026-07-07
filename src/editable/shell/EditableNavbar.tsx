@@ -32,9 +32,16 @@ export function EditableNavbar() {
               <Link
                 key={item.href}
                 href={item.href}
+
+                
                 className={`text-sm font-semibold transition ${
                   active ? 'text-[var(--editable-nav-text)] underline underline-offset-4' : 'text-[rgba(255,219,253,0.76)] hover:text-[var(--editable-nav-text)] hover:underline'
                 }`}
+
+
+
+
+
               >
                 {item.label}
               </Link>
