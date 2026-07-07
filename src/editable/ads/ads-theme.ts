@@ -11,14 +11,14 @@ export const adSkin: AdSkin = {
   border: '1px solid rgba(0,0,0,0.06)',
   shadow: '0 8px 30px rgba(0,0,0,0.06)',
   background: '#ffffff',
-  labelClassName: 'bg-[#FF6600] text-white',
+  labelClassName: 'bg-[#6367FF] text-white',
 }
 
 // Optional per-slot overrides — adjust only where you need to.
 export const adSkinBySlot: Partial<Record<string, AdSkin>> = {
   sidebar: { radius: '12px', shadow: 'none', border: '1px solid rgba(0,0,0,0.08)' },
   popup: { radius: '24px' },
-  header: { radius: '20px', background: '#FFF9F2' },
+  header: { radius: '20px', background: '#FFDBFD' },
 }
 
 /** Merge site default + per-slot override for a slot. */

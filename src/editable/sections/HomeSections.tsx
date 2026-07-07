@@ -25,12 +25,12 @@ const taskIcon: Record<TaskKey, typeof FileText> = {
 }
 
 const pastelPanels = [
-  'bg-[rgba(255,229,105,0.82)]',
-  'bg-[rgba(247,147,39,0.38)]',
-  'bg-[rgba(219,0,91,0.24)]',
-  'bg-[rgba(255,229,105,0.74)]',
-  'bg-[rgba(247,147,39,0.3)]',
-  'bg-[rgba(219,0,91,0.18)]',
+  'bg-[rgba(255,219,253,0.82)]',
+  'bg-[rgba(132,148,255,0.28)]',
+  'bg-[rgba(99,103,255,0.18)]',
+  'bg-[rgba(201,190,255,0.5)]',
+  'bg-[rgba(132,148,255,0.22)]',
+  'bg-[rgba(99,103,255,0.12)]',
 ]
 
 const sectionShell = 'mx-auto w-full max-w-[var(--editable-container)] px-4 sm:px-6 lg:px-8'
@@ -92,7 +92,7 @@ function Stars({ rating }: { rating: number }) {
       {[0, 1, 2, 3, 4].map((index) => (
         <Star
           key={index}
-          className={`h-4 w-4 ${index < Math.round(rating) ? 'fill-[var(--slot4-accent)] text-[var(--slot4-accent)]' : 'fill-[rgba(183,4,4,0.22)] text-[rgba(183,4,4,0.22)]'}`}
+          className={`h-4 w-4 ${index < Math.round(rating) ? 'fill-[var(--slot4-accent)] text-[var(--slot4-accent)]' : 'fill-[rgba(99,103,255,0.22)] text-[rgba(99,103,255,0.22)]'}`}
         />
       ))}
     </span>
@@ -101,19 +101,19 @@ function Stars({ rating }: { rating: number }) {
 
 function FeaturedCard({ post, href }: { post: SitePost; href: string }) {
   return (
-    <Link href={href} className="group relative block overflow-hidden rounded-[2rem] bg-[var(--slot4-dark-bg)] text-[var(--slot4-dark-text)] shadow-[0_28px_80px_rgba(183,4,4,0.28)]">
+    <Link href={href} className="group relative block overflow-hidden rounded-[2rem] bg-[var(--slot4-dark-bg)] text-[var(--slot4-dark-text)] shadow-[0_28px_80px_rgba(99,103,255,0.28)]">
       <div className="absolute inset-0">
         <img src={getEditablePostImage(post)} alt={post.title} className="h-full w-full object-cover opacity-40 transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(183,4,4,0.08),rgba(183,4,4,0.92))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(99,103,255,0.08),rgba(99,103,255,0.92))]" />
       </div>
       <div className="relative flex min-h-[420px] flex-col justify-end p-8 sm:min-h-[520px] sm:p-10">
-        <span className="w-fit rounded-full bg-[rgba(255,229,105,0.12)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--slot4-accent)]">
+        <span className="w-fit rounded-full bg-[rgba(255,219,253,0.12)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--slot4-accent)]">
           Featured spotlight
         </span>
         <h2 className="editable-display mt-5 max-w-3xl text-4xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-5xl lg:text-6xl">
           {post.title}
         </h2>
-        <p className="mt-5 max-w-2xl text-sm leading-7 text-[rgba(255,229,105,0.8)] sm:text-base">{getExcerpt(post, 180)}</p>
+        <p className="mt-5 max-w-2xl text-sm leading-7 text-[rgba(255,219,253,0.8)] sm:text-base">{getExcerpt(post, 180)}</p>
         <div className="mt-6 flex items-center gap-3">
           <Stars rating={ratingOf(post)} />
           <span className="text-sm font-semibold">{ratingOf(post).toFixed(1)}</span>
@@ -128,7 +128,7 @@ function FeaturedCard({ post, href }: { post: SitePost; href: string }) {
 
 function CompactBubbleCard({ post, href }: { post: SitePost; href: string }) {
   return (
-    <Link href={href} className="group flex items-center gap-4 rounded-[1.5rem] bg-[var(--slot4-surface-bg)] p-4 shadow-[0_16px_34px_rgba(183,4,4,0.16)] transition hover:-translate-y-1">
+    <Link href={href} className="group flex items-center gap-4 rounded-[1.5rem] bg-[var(--slot4-surface-bg)] p-4 shadow-[0_16px_34px_rgba(99,103,255,0.16)] transition hover:-translate-y-1">
       <img src={getEditablePostImage(post)} alt={post.title} className="h-16 w-16 rounded-full object-cover ring-4 ring-[var(--slot4-cream)]" />
       <div className="min-w-0">
         <p className="truncate text-xs font-bold uppercase tracking-[0.18em] text-[var(--slot4-accent)]">{getCategory(post)}</p>
@@ -140,7 +140,7 @@ function CompactBubbleCard({ post, href }: { post: SitePost; href: string }) {
 
 function HorizontalCard({ post, href }: { post: SitePost; href: string }) {
   return (
-    <Link href={href} className="group grid gap-4 rounded-[1.75rem] bg-[var(--slot4-surface-bg)] p-4 shadow-[0_16px_34px_rgba(183,4,4,0.16)] transition hover:-translate-y-1 sm:grid-cols-[170px_minmax(0,1fr)]">
+    <Link href={href} className="group grid gap-4 rounded-[1.75rem] bg-[var(--slot4-surface-bg)] p-4 shadow-[0_16px_34px_rgba(99,103,255,0.16)] transition hover:-translate-y-1 sm:grid-cols-[170px_minmax(0,1fr)]">
       <img src={getEditablePostImage(post)} alt={post.title} className="aspect-[4/3] h-full w-full rounded-[1.25rem] object-cover" />
       <div className="min-w-0 self-center">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--slot4-accent)]">{getCategory(post)}</p>
@@ -156,7 +156,7 @@ function EditorialRow({ post, href, index, tone = 'light' }: { post: SitePost; h
   return (
     <Link
       href={href}
-      className={`group flex items-start gap-4 border-b py-4 last:border-b-0 ${isDark ? 'border-[rgba(255,229,105,0.12)]' : 'border-[var(--editable-border)]'}`}
+      className={`group flex items-start gap-4 border-b py-4 last:border-b-0 ${isDark ? 'border-[rgba(255,219,253,0.12)]' : 'border-[var(--editable-border)]'}`}
     >
       <span className="editable-display flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--slot4-dark-bg)] text-lg font-semibold text-[var(--slot4-dark-text)]">
         {String(index + 1).padStart(2, '0')}
@@ -164,19 +164,19 @@ function EditorialRow({ post, href, index, tone = 'light' }: { post: SitePost; h
       <div className="min-w-0 flex-1">
         <p className={`text-xs font-bold uppercase tracking-[0.18em] ${isDark ? 'text-[var(--slot4-accent)]' : 'text-[var(--slot4-accent-fill)]'}`}>{getCategory(post)}</p>
         <h3 className={`mt-1 text-xl font-bold leading-tight ${isDark ? 'text-[var(--slot4-dark-text)] group-hover:text-[var(--slot4-accent)]' : 'text-[var(--slot4-page-text)] group-hover:text-[var(--slot4-accent-fill)]'}`}>{post.title}</h3>
-        <p className={`mt-2 line-clamp-2 text-sm leading-6 ${isDark ? 'text-[rgba(255,229,105,0.8)]' : 'text-[var(--slot4-muted-text)]'}`}>{getExcerpt(post, 95)}</p>
+        <p className={`mt-2 line-clamp-2 text-sm leading-6 ${isDark ? 'text-[rgba(255,219,253,0.8)]' : 'text-[var(--slot4-muted-text)]'}`}>{getExcerpt(post, 95)}</p>
       </div>
-      <ChevronRight className={`mt-2 h-5 w-5 shrink-0 transition ${isDark ? 'text-[rgba(255,229,105,0.48)] group-hover:text-[var(--slot4-accent)]' : 'text-[var(--slot4-soft-muted-text)] group-hover:text-[var(--slot4-accent-fill)]'}`} />
+      <ChevronRight className={`mt-2 h-5 w-5 shrink-0 transition ${isDark ? 'text-[rgba(255,219,253,0.48)] group-hover:text-[var(--slot4-accent)]' : 'text-[var(--slot4-soft-muted-text)] group-hover:text-[var(--slot4-accent-fill)]'}`} />
     </Link>
   )
 }
 
 function ImageFirstCard({ post, href }: { post: SitePost; href: string }) {
   return (
-    <Link href={href} className="group overflow-hidden rounded-[1.75rem] bg-[var(--slot4-surface-bg)] shadow-[0_18px_38px_rgba(183,4,4,0.16)] transition hover:-translate-y-1">
+    <Link href={href} className="group overflow-hidden rounded-[1.75rem] bg-[var(--slot4-surface-bg)] shadow-[0_18px_38px_rgba(99,103,255,0.16)] transition hover:-translate-y-1">
       <div className="relative aspect-[5/4] overflow-hidden">
         <img src={getEditablePostImage(post)} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <span className="absolute left-4 top-4 rounded-full bg-[rgba(255,229,105,0.92)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--slot4-dark-bg)]">
+        <span className="absolute left-4 top-4 rounded-full bg-[rgba(255,219,253,0.92)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--slot4-dark-bg)]">
           {getCategory(post)}
         </span>
       </div>
@@ -190,17 +190,17 @@ function ImageFirstCard({ post, href }: { post: SitePost; href: string }) {
 
 function DirectoryPanel({ title, route, posts, tone, icon: Icon }: { title: string; route: string; posts: SitePost[]; tone: string; icon: typeof FileText }) {
   return (
-    <div className={`rounded-[1.75rem] ${tone} px-5 pb-6 pt-5 shadow-[0_18px_36px_rgba(183,4,4,0.16)]`}>
+    <div className={`rounded-[1.75rem] ${tone} px-5 pb-6 pt-5 shadow-[0_18px_36px_rgba(99,103,255,0.16)]`}>
       <div className="flex items-center justify-between">
         <h3 className="text-center text-2xl font-bold text-[var(--slot4-page-text)]">{title}</h3>
-        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(255,229,105,0.72)] text-[var(--slot4-dark-bg)]">
+        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(255,219,253,0.72)] text-[var(--slot4-dark-bg)]">
           <Icon className="h-5 w-5" />
         </span>
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-4 lg:grid-cols-1 xl:grid-cols-4">
         {posts.slice(0, 4).map((post) => (
           <Link key={post.slug || post.id} href={`${route}/${post.slug}`} className="group text-center">
-            <img src={getEditablePostImage(post)} alt={post.title} className="mx-auto h-16 w-16 rounded-full object-cover ring-4 ring-[rgba(255,229,105,0.82)]" />
+            <img src={getEditablePostImage(post)} alt={post.title} className="mx-auto h-16 w-16 rounded-full object-cover ring-4 ring-[rgba(255,219,253,0.82)]" />
             <p className="mt-3 line-clamp-2 text-sm font-semibold text-[var(--slot4-page-text)] group-hover:text-[var(--slot4-accent-fill)]">{post.title}</p>
           </Link>
         ))}
@@ -224,21 +224,21 @@ export function EditableHomeHero({ primaryTask, primaryRoute, posts, timeSection
 
   return (
     <section className="relative overflow-hidden pb-10 pt-8 sm:pb-14">
-      <div className="absolute inset-x-0 top-0 h-[540px] bg-[linear-gradient(180deg,#B70404_0%,#DB005B_56%,rgba(255,229,105,0)_100%)]" />
+      <div className="absolute inset-x-0 top-0 h-[540px] bg-[linear-gradient(180deg,#6367FF_0%,#8494FF_56%,rgba(201,190,255,0)_100%)]" />
       <div className={`relative ${sectionShell}`}>
         <div className="flex flex-col items-center text-center text-[var(--slot4-dark-text)]">
-          <p className="rounded-full border border-[rgba(255,229,105,0.14)] bg-[rgba(255,229,105,0.08)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.24em] text-[var(--slot4-accent)]">
+          <p className="rounded-full border border-[rgba(255,219,253,0.14)] bg-[rgba(255,219,253,0.08)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.24em] text-[var(--slot4-accent)]">
             {pagesContent.home.hero.badge || 'Discover better choices'}
           </p>
           <h1 className="editable-display mt-8 max-w-4xl text-balance text-4xl font-semibold leading-[1.04] tracking-[-0.05em] sm:text-5xl lg:text-[4.2rem]">
             Fast, polished discovery for service buyers
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-[rgba(255,229,105,0.82)] sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-8 text-[rgba(255,219,253,0.82)] sm:text-lg">
             Explore trusted offers, standout profiles, and timely posts through a marketplace-style homepage built for quick comparisons.
           </p>
           <p className="mt-3 text-2xl font-bold text-[var(--slot4-accent)]">Skilled, trusted, and easy to browse.</p>
 
-          <form action="/search" className="mt-10 flex w-full max-w-3xl flex-col overflow-hidden rounded-[1.15rem] bg-[var(--slot4-surface-bg)] shadow-[0_20px_60px_rgba(183,4,4,0.26)] sm:flex-row">
+          <form action="/search" className="mt-10 flex w-full max-w-3xl flex-col overflow-hidden rounded-[1.15rem] bg-[var(--slot4-surface-bg)] shadow-[0_20px_60px_rgba(99,103,255,0.26)] sm:flex-row">
             <div className="flex items-center gap-3 border-b border-[var(--editable-border)] px-5 py-4 sm:min-w-[240px] sm:border-b-0 sm:border-r">
               <MapPin className="h-5 w-5 text-[var(--slot4-muted-text)]" />
               <span className="text-sm font-semibold text-[var(--slot4-page-text)]">{SITE_CONFIG.name}</span>
@@ -323,11 +323,11 @@ export function EditableMagazineSplit({ primaryTask, primaryRoute, posts, timeSe
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--slot4-accent)]">Guided discovery</p>
           <h2 className="editable-display mt-3 text-4xl font-semibold tracking-[-0.04em]">Compare standout options in one place</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-[rgba(255,229,105,0.74)]">A darker premium section inspired by service-comparison layouts, designed to surface strong options quickly.</p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-[rgba(255,219,253,0.74)]">A darker premium section inspired by service-comparison layouts, designed to surface strong options quickly.</p>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {left.map((post) => (
-            <div key={post.slug || post.id} className="rounded-[1.75rem] bg-[rgba(255,229,105,0.08)] p-5 shadow-[0_18px_36px_rgba(183,4,4,0.28)] backdrop-blur-sm">
+            <div key={post.slug || post.id} className="rounded-[1.75rem] bg-[rgba(255,219,253,0.08)] p-5 shadow-[0_18px_36px_rgba(99,103,255,0.28)] backdrop-blur-sm">
               <div className="flex items-center gap-4">
                 <img src={getEditablePostImage(post)} alt={post.title} className="h-16 w-16 rounded-2xl object-cover" />
                 <div className="min-w-0">
@@ -375,7 +375,7 @@ export function EditableTimeCollections({ primaryTask, primaryRoute, posts, time
         const copy = sectionCopy[section.key] || sectionCopy.spotlight
         const chunks = groupedPosts(section.posts.slice(0, 9), 3)
         return (
-          <section key={section.key} className={sectionIndex % 2 === 0 ? 'bg-[rgba(247,147,39,0.14)] py-14' : 'py-14'}>
+          <section key={section.key} className={sectionIndex % 2 === 0 ? 'bg-[rgba(132,148,255,0.14)] py-14' : 'py-14'}>
             <div className={sectionShell}>
               <div className="flex items-end justify-between gap-4">
                 <div>
@@ -391,15 +391,15 @@ export function EditableTimeCollections({ primaryTask, primaryRoute, posts, time
                 {chunks.map((group, groupIndex) => (
                   <div
                     key={`${section.key}-${groupIndex}`}
-                    className={`rounded-[1.75rem] border border-[var(--editable-border)] ${pastelPanels[(sectionIndex + groupIndex) % pastelPanels.length]} p-5 shadow-[0_16px_34px_rgba(183,4,4,0.16)]`}
+                    className={`rounded-[1.75rem] border border-[var(--editable-border)] ${pastelPanels[(sectionIndex + groupIndex) % pastelPanels.length]} p-5 shadow-[0_16px_34px_rgba(99,103,255,0.16)]`}
                   >
                     <div className="flex items-center justify-between">
                       <h3 className="text-2xl font-bold text-[var(--slot4-page-text)]">{taskLabel(primaryTask)}</h3>
-                      <span className="rounded-full bg-[rgba(255,229,105,0.78)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--slot4-accent-fill)]">
+                      <span className="rounded-full bg-[rgba(255,219,253,0.78)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--slot4-accent-fill)]">
                         Set {groupIndex + 1}
                       </span>
                     </div>
-                    <div className="mt-4 space-y-1 rounded-[1.2rem] bg-[rgba(255,229,105,0.8)] px-4 py-2">
+                    <div className="mt-4 space-y-1 rounded-[1.2rem] bg-[rgba(255,219,253,0.8)] px-4 py-2">
                       {group.map((post, index) => (
                         <EditorialRow key={post.slug || post.id} post={post} href={postHref(primaryTask, post, primaryRoute)} index={index} />
                       ))}
@@ -426,7 +426,7 @@ export function EditableHomeCta() {
   return (
     <section id="get-app" className="py-16">
       <div className={sectionShell}>
-        <div className="rounded-[2rem] bg-[var(--slot4-surface-bg)] px-6 py-10 shadow-[0_22px_48px_rgba(183,4,4,0.18)] sm:px-8">
+        <div className="rounded-[2rem] bg-[var(--slot4-surface-bg)] px-6 py-10 shadow-[0_22px_48px_rgba(99,103,255,0.18)] sm:px-8">
           <h2 className="editable-display text-4xl font-semibold tracking-[-0.04em] text-[var(--slot4-page-text)]">
             One destination for profiles, offers, and useful discovery
           </h2>
