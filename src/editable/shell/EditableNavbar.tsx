@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, Search, X } from 'lucide-react'
@@ -8,7 +8,6 @@ import { SITE_CONFIG } from '@/lib/site-config'
 import { useEditableLocalAuthSession } from '@/editable/components/EditableLocalAuthForms'
 
 export function EditableNavbar() {
-  const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const { session, logout } = useEditableLocalAuthSession()
   const navItems = useMemo(
@@ -45,6 +44,11 @@ export function EditableNavbar() {
                 className={`text-sm font-semibold transition ${
                   active ? 'text-[var(--editable-nav-text)] underline underline-offset-4' : 'text-[rgba(255,229,105,0.76)] hover:text-[var(--editable-nav-text)] hover:underline'
                 }`}
+
+
+
+
+
               >
                 {item.label}
               </Link>
