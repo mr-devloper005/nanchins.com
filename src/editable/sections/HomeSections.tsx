@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Building2, Camera, ChevronRight, FileText, Image as ImageIcon, MapPin, Megaphone, Search, Sparkles, Star, UserRound, Bookmark } from 'lucide-react'
+import { Building2, ChevronRight, FileText, Image as ImageIcon, MapPin, Megaphone, Search, Sparkles, Star, UserRound, Bookmark } from 'lucide-react'
 import type { SitePost } from '@/lib/site-connector'
 import type { HomeTimeSection } from '@/lib/task-data'
 import type { TaskKey } from '@/lib/site-config'
@@ -133,19 +133,6 @@ function CompactBubbleCard({ post, href }: { post: SitePost; href: string }) {
       <div className="min-w-0">
         <p className="truncate text-xs font-bold uppercase tracking-[0.18em] text-[var(--slot4-accent)]">{getCategory(post)}</p>
         <h3 className="line-clamp-2 text-base font-bold text-[var(--slot4-page-text)] group-hover:text-[var(--slot4-accent-fill)]">{post.title}</h3>
-      </div>
-    </Link>
-  )
-}
-
-function HorizontalCard({ post, href }: { post: SitePost; href: string }) {
-  return (
-    <Link href={href} className="group grid gap-4 rounded-[1.75rem] bg-[var(--slot4-surface-bg)] p-4 shadow-[0_16px_34px_rgba(99,103,255,0.16)] transition hover:-translate-y-1 sm:grid-cols-[170px_minmax(0,1fr)]">
-      <img src={getEditablePostImage(post)} alt={post.title} className="aspect-[4/3] h-full w-full rounded-[1.25rem] object-cover" />
-      <div className="min-w-0 self-center">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--slot4-accent)]">{getCategory(post)}</p>
-        <h3 className="mt-2 line-clamp-2 text-2xl font-bold leading-tight text-[var(--slot4-page-text)]">{post.title}</h3>
-        <p className="mt-3 line-clamp-2 text-sm leading-7 text-[var(--slot4-muted-text)]">{getExcerpt(post, 110)}</p>
       </div>
     </Link>
   )
