@@ -70,7 +70,7 @@ export function EditableArticleComments({ slug, comments = [] }: { slug: string;
         <span className="text-[var(--tk-muted)]">({all.length})</span>
       </div>
 
-      <form onSubmit={submit} className="mt-6 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-5 shadow-[0_18px_34px_rgba(99,103,255,0.18)]">
+      <form onSubmit={submit} className="mt-6 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-5 shadow-[0_18px_34px_rgba(183,4,4,0.18)]">
         <input
           value={name}
           onChange={(event) => setName(event.target.value)}
@@ -99,7 +99,7 @@ export function EditableArticleComments({ slug, comments = [] }: { slug: string;
 
       <div className="mt-6 grid gap-3">
         {all.map((comment) => (
-          <div key={comment.id} className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-5 shadow-[0_12px_28px_rgba(99,103,255,0.14)]">
+          <div key={comment.id} className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-5 shadow-[0_12px_28px_rgba(183,4,4,0.14)]">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--tk-accent-soft)] text-sm font-bold text-[var(--tk-accent)]">
                 {initial(comment.name)}

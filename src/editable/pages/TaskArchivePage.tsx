@@ -66,7 +66,7 @@ const taskGrid: Record<TaskKey, string> = {
   profile: 'grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
 }
 
-const cardBase = 'group block rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_64px_rgba(99,103,255,0.24)]'
+const cardBase = 'group block rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] transition duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_64px_rgba(183,4,4,0.24)]'
 
 const archiveAds: Record<TaskKey, { top: 'header' | 'in-feed' | 'sidebar' | 'footer'; bottom: 'header' | 'in-feed' | 'sidebar' | 'footer' }> = {
   article: { top: 'header', bottom: 'in-feed' },
@@ -108,7 +108,7 @@ export function TaskArchiveView({ task, posts, pagination, category, basePath }:
     <EditableSiteShell>
       <main style={taskThemeStyle(task)} className="min-h-screen bg-[var(--tk-bg)] text-[var(--tk-text)]">
         <header className="relative overflow-hidden border-b border-[var(--tk-line)]">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,219,253,0.08),transparent_32%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,229,105,0.08),transparent_32%)]" />
           <div className="pointer-events-none absolute inset-x-0 -top-40 h-96 bg-[radial-gradient(60%_60%_at_50%_0%,var(--tk-glow),transparent_70%)]" />
           <div className="relative mx-auto max-w-[var(--editable-container)] px-6 py-20 sm:py-24 lg:px-8">
             <div className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.34em] text-[var(--tk-accent)]">
@@ -333,7 +333,7 @@ function ImageArchiveCard({ post, href, index }: { post: SitePost; href: string;
     <Link href={href} className="group mb-5 block break-inside-avoid overflow-hidden rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] transition duration-300 hover:-translate-y-1">
       <div className={`relative overflow-hidden ${index % 3 === 0 ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}>
         <img src={image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(99,103,255,0.82))] opacity-80 transition group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(183,4,4,0.82))] opacity-80 transition group-hover:opacity-100" />
         <div className="absolute inset-x-0 bottom-0 p-5">
           <h2 className="editable-display line-clamp-2 text-lg font-semibold leading-snug tracking-[-0.02em] text-[var(--tk-text)]">{post.title}</h2>
           <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-[var(--tk-muted)]">View image <ArrowUpRight className="h-3.5 w-3.5" /></span>

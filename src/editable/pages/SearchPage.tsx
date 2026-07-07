@@ -57,12 +57,12 @@ function SearchResultCard({ post, index }: { post: SitePost; index: number }) {
   const strong = index % 5 === 0
 
   return (
-    <Link href={href} className={`group block overflow-hidden rounded-[2rem] border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] shadow-[0_18px_40px_rgba(99,103,255,0.16)] transition hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(99,103,255,0.22)] ${strong ? 'md:col-span-2' : ''}`}>
+    <Link href={href} className={`group block overflow-hidden rounded-[2rem] border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] shadow-[0_18px_40px_rgba(183,4,4,0.16)] transition hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(183,4,4,0.22)] ${strong ? 'md:col-span-2' : ''}`}>
       {image ? (
         <div className={`relative overflow-hidden bg-[var(--slot4-dark-bg)] ${strong ? 'aspect-[16/7]' : 'aspect-[16/10]'}`}>
           <img src={image} alt="" className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(99,103,255,0.08),rgba(99,103,255,0.84))]" />
-          <span className="absolute left-4 top-4 rounded-full bg-[rgba(255,219,253,0.92)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--slot4-dark-bg)]">{taskLabel}</span>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(183,4,4,0.08),rgba(183,4,4,0.84))]" />
+          <span className="absolute left-4 top-4 rounded-full bg-[rgba(255,229,105,0.92)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--slot4-dark-bg)]">{taskLabel}</span>
         </div>
       ) : null}
       <div className="p-5 sm:p-6">
@@ -91,7 +91,7 @@ export default async function SearchPage({ searchParams }: { searchParams?: Prom
     <EditableSiteShell>
       <main className="min-h-screen bg-[var(--editable-page-bg,#fff7ee)] text-[var(--editable-page-text,#2f1d16)]">
         <section className="mx-auto max-w-[var(--editable-container)] px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
-          <div className="grid gap-8 rounded-[2.5rem] border border-[var(--editable-border)] bg-[rgba(255,219,253,0.76)] p-6 shadow-[0_30px_90px_rgba(99,103,255,0.16)] backdrop-blur md:grid-cols-[0.8fr_1.2fr] lg:p-10">
+          <div className="grid gap-8 rounded-[2.5rem] border border-[var(--editable-border)] bg-[rgba(255,229,105,0.76)] p-6 shadow-[0_30px_90px_rgba(183,4,4,0.16)] backdrop-blur md:grid-cols-[0.8fr_1.2fr] lg:p-10">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.28em] opacity-55">{pagesContent.search.hero.badge}</p>
               <h1 className="mt-5 text-5xl font-black leading-[0.92] tracking-[-0.08em] sm:text-7xl">{pagesContent.search.hero.title}</h1>
@@ -99,16 +99,16 @@ export default async function SearchPage({ searchParams }: { searchParams?: Prom
             </div>
             <form action="/search" className="self-end rounded-[2rem] border border-[var(--editable-border)] bg-[var(--slot4-surface-bg)] p-4 sm:p-5">
               <input type="hidden" name="master" value="1" />
-              <label className="flex items-center gap-3 rounded-2xl border border-[var(--editable-border)] bg-[rgba(255,219,253,0.84)] px-4 py-3">
+              <label className="flex items-center gap-3 rounded-2xl border border-[var(--editable-border)] bg-[rgba(255,229,105,0.84)] px-4 py-3">
                 <Search className="h-5 w-5 opacity-45" />
                 <input name="q" defaultValue={query} placeholder={pagesContent.search.hero.placeholder} className="min-w-0 flex-1 bg-transparent text-base font-bold outline-none placeholder:text-current/35" />
               </label>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <label className="flex items-center gap-2 rounded-2xl border border-[var(--editable-border)] bg-[rgba(255,219,253,0.84)] px-4 py-3">
+                <label className="flex items-center gap-2 rounded-2xl border border-[var(--editable-border)] bg-[rgba(255,229,105,0.84)] px-4 py-3">
                   <Filter className="h-4 w-4 opacity-45" />
                   <input name="category" defaultValue={category} placeholder="Category" className="min-w-0 flex-1 bg-transparent text-sm font-bold outline-none placeholder:text-current/35" />
                 </label>
-                <select name="task" defaultValue={task} className="rounded-2xl border border-[var(--editable-border)] bg-[rgba(255,219,253,0.84)] px-4 py-3 text-sm font-black outline-none">
+                <select name="task" defaultValue={task} className="rounded-2xl border border-[var(--editable-border)] bg-[rgba(255,229,105,0.84)] px-4 py-3 text-sm font-black outline-none">
                   <option value="">All content types</option>
                   {enabledTasks.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
                 </select>
@@ -139,7 +139,7 @@ export default async function SearchPage({ searchParams }: { searchParams?: Prom
               </div>
             </>
           ) : (
-            <div className="mt-8 rounded-[2rem] border border-dashed border-[var(--editable-border)] bg-[rgba(255,219,253,0.7)] p-10 text-center">
+            <div className="mt-8 rounded-[2rem] border border-dashed border-[var(--editable-border)] bg-[rgba(255,229,105,0.7)] p-10 text-center">
               <p className="text-2xl font-black tracking-[-0.04em]">No matching posts found.</p>
               <p className="mt-3 text-sm font-semibold opacity-60">Try a different keyword, task type, or category.</p>
             </div>

@@ -18,7 +18,7 @@ export function EmptyState({
   className,
 }: EmptyStateProps) {
   return (
-    <section className={cn('rounded-[2rem] border border-current/10 bg-[rgba(255,219,253,0.72)] p-8 text-center shadow-[0_18px_40px_rgba(99,103,255,0.16)] backdrop-blur-sm', className)}>
+    <section className={cn('rounded-[2rem] border border-current/10 bg-[rgba(255,229,105,0.72)] p-8 text-center shadow-[0_18px_40px_rgba(183,4,4,0.16)] backdrop-blur-sm', className)}>
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-current/10">
         <SearchX className="h-6 w-6" />
       </div>
