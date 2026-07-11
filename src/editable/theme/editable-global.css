@@ -98,8 +98,8 @@ body {
 }
 
 ::selection {
-  background: rgba(132,148,255,0.68);
-  color: var(--slot4-dark-bg);
+  background: rgba(231,111,81,0.3);
+  color: #173d3a;
 }
 
 ::-webkit-scrollbar {
@@ -108,17 +108,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(99,103,255,0.14);
+  background: rgba(42,140,130,0.1);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(132,148,255,0.72);
+  background: rgba(42,140,130,0.55);
   border-radius: 999px;
-  border: 2px solid rgba(255,219,253,0.48);
+  border: 2px solid #f8f6ee;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99,103,255,0.84);
+  background: rgba(231,111,81,0.78);
 }
 
 .article-content {
@@ -127,6 +127,12 @@ body {
 
 .article-content p + p {
   margin-top: 1.1rem;
+}
+
+/* Keep classified-detail keywords readable on its purple theme background. */
+.classified-detail-page .article-content strong,
+.classified-detail-page .article-content b {
+  color: inherit !important;
 }
 
 .article-content h2,
