@@ -25,12 +25,12 @@ const taskIcon: Record<TaskKey, typeof FileText> = {
 }
 
 const pastelPanels = [
-  'bg-[rgba(255,219,253,0.82)]',
-  'bg-[rgba(132,148,255,0.28)]',
-  'bg-[rgba(99,103,255,0.18)]',
-  'bg-[rgba(201,190,255,0.5)]',
-  'bg-[rgba(132,148,255,0.22)]',
-  'bg-[rgba(99,103,255,0.12)]',
+  'bg-[rgba(255,248,232,0.9)]',
+  'bg-[rgba(221,237,231,0.86)]',
+  'bg-[rgba(252,231,216,0.82)]',
+  'bg-[rgba(232,227,244,0.72)]',
+  'bg-[rgba(210,234,228,0.76)]',
+  'bg-[rgba(248,246,238,0.92)]',
 ]
 
 const sectionShell = 'mx-auto w-full max-w-[var(--editable-container)] px-4 sm:px-6 lg:px-8'
@@ -211,7 +211,7 @@ export function EditableHomeHero({ primaryTask, primaryRoute, posts, timeSection
 
   return (
     <section className="relative overflow-hidden pb-10 pt-8 sm:pb-14">
-      <div className="absolute inset-x-0 top-0 h-[540px] bg-[linear-gradient(180deg,#6367FF_0%,#8494FF_56%,rgba(201,190,255,0)_100%)]" />
+      <div className="absolute inset-x-0 top-0 h-[540px] bg-[linear-gradient(180deg,#DDEDE7_0%,#EDF5F0_58%,rgba(248,246,238,0)_100%)]" />
       <div className={`relative ${sectionShell}`}>
         <div className="flex flex-col items-center text-center text-[var(--slot4-dark-text)]">
           <p className="rounded-full border border-[rgba(255,219,253,0.14)] bg-[rgba(255,219,253,0.08)] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.24em] text-[var(--slot4-accent)]">
@@ -220,7 +220,7 @@ export function EditableHomeHero({ primaryTask, primaryRoute, posts, timeSection
           <h1 className="editable-display mt-8 max-w-4xl text-balance text-4xl font-semibold leading-[1.04] tracking-[-0.05em] sm:text-5xl lg:text-[4.2rem]">
             Fast, polished discovery for service buyers
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-[rgba(255,219,253,0.82)] sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--slot4-muted-text)] sm:text-lg">
             Explore trusted offers, standout profiles, and timely posts through a marketplace-style homepage built for quick comparisons.
           </p>
           <p className="mt-3 text-2xl font-bold text-[var(--slot4-accent)]">Skilled, trusted, and easy to browse.</p>
@@ -310,7 +310,7 @@ export function EditableMagazineSplit({ primaryTask, primaryRoute, posts, timeSe
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--slot4-accent)]">Guided discovery</p>
           <h2 className="editable-display mt-3 text-4xl font-semibold tracking-[-0.04em]">Compare standout options in one place</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-[rgba(255,219,253,0.74)]">A darker premium section inspired by service-comparison layouts, designed to surface strong options quickly.</p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--slot4-muted-text)]">A fresh comparison section designed to surface strong options quickly.</p>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {left.map((post) => (
@@ -362,7 +362,7 @@ export function EditableTimeCollections({ primaryTask, primaryRoute, posts, time
         const copy = sectionCopy[section.key] || sectionCopy.spotlight
         const chunks = groupedPosts(section.posts.slice(0, 9), 3)
         return (
-          <section key={section.key} className={sectionIndex % 2 === 0 ? 'bg-[rgba(132,148,255,0.14)] py-14' : 'py-14'}>
+          <section key={section.key} className={sectionIndex % 2 === 0 ? 'bg-[rgba(221,237,231,0.5)] py-14' : 'py-14'}>
             <div className={sectionShell}>
               <div className="flex items-end justify-between gap-4">
                 <div>
